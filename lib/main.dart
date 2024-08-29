@@ -1,20 +1,18 @@
+import 'package:com.example.app/controller_main.dart';
 import 'package:com.example.app/home.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'firebase_options.dart';
-import 'login.dart';
 // ...
-late SharedPreferences sharedPreferences;
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-   sharedPreferences =await SharedPreferences.getInstance();
 await Firebase.initializeApp(
 options: DefaultFirebaseOptions.currentPlatform,);
 
-  // final FirebaseAnalytics analytics = FirebaseAnalytics();
+  MainControllerIMP controller=Get.put(MainControllerIMP());
 
+await  controller.loadmovies();
   runApp(const MyApp());
 }
 
@@ -31,7 +29,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:sharedPreferences.getInt("id")!=null?Home():  Login(),
+      home:Home(),
       routes: {
         "home":(context)=>Home(),
       },
@@ -39,3 +37,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
+
+// https://api.themoviedb.org/3
