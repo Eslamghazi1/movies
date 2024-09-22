@@ -1,4 +1,4 @@
-import 'package:com.example.app/constants.dart';
+import 'constants.dart';
 import 'package:get/get.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
@@ -14,7 +14,7 @@ class MainControllerIMP extends MainController{
   Map  topmovies={};
   Map  anothermoviestop={};
   Map  moviespuplar={};
-  Map another={};
+  Map upcoming={};
   Map searched={};
   @override
   loadmovies()async {
@@ -27,7 +27,7 @@ class MainControllerIMP extends MainController{
       topmovies = await tmdb.v3.trending.getTrending(timeWindow:TimeWindow.week);
       anothermoviestop= await tmdb.v3.movies.getTopRated();
       moviespuplar= await tmdb.v3.movies.getPopular();
-      // another =await tmdb.v3.collections.getDetails(5);
+      upcoming =await tmdb.v3.movies.getUpcoming();
       // print("the collection you have is :$another");
 
 
