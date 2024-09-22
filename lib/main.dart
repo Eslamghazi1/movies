@@ -1,18 +1,11 @@
-import 'package:com.example.app/controller_main.dart';
-import 'package:com.example.app/home.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'controller_main.dart';
+import 'home.dart';
+import 'splash.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'firebase_options.dart';
 // ...
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-await Firebase.initializeApp(
-options: DefaultFirebaseOptions.currentPlatform,);
-
-  MainControllerIMP controller=Get.put(MainControllerIMP());
-
-await  controller.loadmovies();
   runApp(const MyApp());
 }
 
@@ -24,12 +17,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Movie Info',
+      // darkTheme: ThemeData.dark(),
+
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        brightness: Brightness.dark,
+        primaryColor: Colors.blue,
+        // scaffoldBackgroundColor: Colors.black12,
+        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
       ),
-      home:Home(),
+      home: Splash(),
+
       routes: {
         "home":(context)=>Home(),
       },
