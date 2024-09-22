@@ -1,5 +1,5 @@
 import 'package:com.example.app/controller_main.dart';
-import 'package:com.example.app/details.dart';
+import 'package:com.example.app/Image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:transparent_image/transparent_image.dart';
